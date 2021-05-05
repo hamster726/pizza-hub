@@ -1,7 +1,11 @@
 import React from "react";
 import { Title } from "../../styles/globalStyled";
 
-import CatalogItemImg from "../../img/catalog/catalog-item-1.png";
+import CatalogItemImg1 from "../../img/catalog/catalog-item-1.png";
+import CatalogItemImg2 from "../../img/catalog/catalog-item-2.png"
+import CatalogItemImg3 from "../../img/catalog/catalog-item-3.png"
+import CatalogItemImg4 from "../../img/catalog/catalog-item-4.png"
+
 import CardItem from "./cardItem";
 import { CardListContainer } from "./cardListStyle";
 
@@ -9,7 +13,7 @@ const CardList = () => {
   const cardItemParams = [
     {
       key: "cheeseburger-pizza-99",
-      img: CatalogItemImg,
+      img: CatalogItemImg1,
       name: "Чізбургер піца",
 
       pizzaKit: {
@@ -28,9 +32,9 @@ const CardList = () => {
       },
     },
     {
-      key: "cheeseburger-pizza-99",
-      img: CatalogItemImg,
-      name: "Чізбургер піца",
+      key: "cheese-pizza-99",
+      img: CatalogItemImg2,
+      name: "Сирна",
 
       pizzaKit: {
         doughSlim: true,
@@ -43,14 +47,14 @@ const CardList = () => {
         meat: true,
         grill: false,
         spice: false,
-        popularity: 10,
-        price: 99,
+        popularity: 6,
+        price: 106,
       },
     },
     {
-      key: "cheeseburger-pizza-99",
-      img: CatalogItemImg,
-      name: "Чізбургер піца",
+      key: "asian-shrimp-pizza-99",
+      img: CatalogItemImg3,
+      name: "Креветки по азіатскі",
 
       pizzaKit: {
         doughSlim: true,
@@ -63,14 +67,14 @@ const CardList = () => {
         meat: true,
         grill: false,
         spice: false,
-        popularity: 10,
-        price: 99,
+        popularity: 5,
+        price: 120,
       },
     },
     {
-      key: "cheeseburger-pizza-99",
-      img: CatalogItemImg,
-      name: "Чізбургер піца",
+      key: "chicken-cheese-pizza-99",
+      img: CatalogItemImg4,
+      name: "Сирна із куркою",
 
       pizzaKit: {
         doughSlim: true,
@@ -83,8 +87,8 @@ const CardList = () => {
         meat: true,
         grill: false,
         spice: false,
-        popularity: 10,
-        price: 99,
+        popularity: 8,
+        price: 96,
       },
     },
   ];
