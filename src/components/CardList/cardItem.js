@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AddToCartButton,
   CardContainer,
@@ -18,6 +18,20 @@ import {
 } from "./cardStyle";
 
 const CardItem = ({ params }) => {
+  const [quantity, setQuantity] = useState(0);
+
+  const renderAddButton = () => {
+    if (quantity === 0) return <AddToCartButton onClick={() => setQuantity(quantity + 1)}>Додати</AddToCartButton>;
+
+    return (
+      <QuantityOfPizza>
+        <MinusButton onClick={() => setQuantity(quantity - 1)} />
+        {quantity}
+        <PlusButton onClick={() => setQuantity(quantity + 1)} />
+      </QuantityOfPizza>
+    );
+  };
+
   return (
     <CardContainer>
       <ImageContainer>
@@ -50,7 +64,9 @@ const CardItem = ({ params }) => {
               id={`25sm-size-${params.key}`}
               name={`size-${params.key}`}
             />
-            <Label for={`25sm-size-${params.key}`}>25 см</Label>
+            <Label for={`25sm-size-${params.key}`} disabled>
+              25 см
+            </Label>
           </List>
           <List>
             <InputButton
@@ -72,10 +88,7 @@ const CardItem = ({ params }) => {
       </SelectorWrapper>
       <PriceContainer>
         <Price>{params.pizzaParams.price} грн.</Price>
-        <AddToCartButton>Додати</AddToCartButton>
-        <QuantityOfPizza>
-          <MinusButton /> 1 <PlusButton />
-        </QuantityOfPizza>
+        {renderAddButton()}
       </PriceContainer>
     </CardContainer>
   );

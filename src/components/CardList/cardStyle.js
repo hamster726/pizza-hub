@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import PlusIco from "../../img/icons/plus-solid.svg"
 import MinusIco from "../../img/icons/minus-solid.svg"
 
@@ -70,8 +70,11 @@ const Label = styled.label`
   font-size: 16px;
   border-radius: 4px;
   margin: 0;
-
   color: #2C2C2C;
+
+  ${props => props.disabled && css`
+    opacity: 0.3;
+  `}
 `;
 
 const InputButton = styled.input`
@@ -98,8 +101,7 @@ const Price = styled.div`
 `;
 
 const AddToCartButton = styled.button`
-  //display: block;
-  display: none;
+  display: block;
   position: relative;
   width: 132px;
   height: 40px;
