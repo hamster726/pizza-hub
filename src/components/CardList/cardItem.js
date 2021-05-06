@@ -45,6 +45,7 @@ const CardItem = ({ params }) => {
               type="radio"
               id={`slim-dough-${params.key}`}
               name={`dough-${params.key}`}
+              checked
             />
             <Label for={`slim-dough-${params.key}`}>тонке</Label>
           </List>
@@ -63,6 +64,7 @@ const CardItem = ({ params }) => {
               type="radio"
               id={`25sm-size-${params.key}`}
               name={`size-${params.key}`}
+              disabled
             />
             <Label for={`25sm-size-${params.key}`} disabled>
               25 см

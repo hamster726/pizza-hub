@@ -10,13 +10,21 @@ import {
   LogoImg,
   LogoWrapper, Price
 } from "./style";
+import {useSelector} from "react-redux";
 
 const Header = () => {
+  const {price, cartCount} = useSelector((state) => {
+    return {
+      price: state.sumPrice,
+      cartCount: state.cart.length
+    }
+  });
+
   return (
     <HeaderContainer>
       <LogoWrapper href="/">
         <LogoContainer>
-          <LogoImg src={Logo} alt="pizza hub logo"/>
+          <LogoImg src={Logo} alt="pizza hub logo" />
         </LogoContainer>
         <BrandContainer>
           <Brand>Pizza Hub</Brand>
@@ -24,11 +32,11 @@ const Header = () => {
         </BrandContainer>
       </LogoWrapper>
       <CartButton href="#">
-        <Price >99 999 грн</Price>
-        <CartCounter>1</CartCounter>
+        <Price>{price} грн</Price>
+        <CartCounter>{cartCount}</CartCounter>
       </CartButton>
     </HeaderContainer>
-  )
-}
+  );
+};
 
 export default Header;
