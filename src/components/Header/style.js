@@ -87,7 +87,8 @@ const Price = styled.div`
   font-size: 16px;
   line-height: 19px;
   min-width: 60px;
-  flex: 1 1 70%;
+  max-width: 60%;
+  text-align: right;
 
   color: #FFFFFF;
 `
@@ -100,7 +101,7 @@ const CartCounter = styled.div`
   font-size: 16px;
   line-height: 19px;
   text-align: end;
-  flex: 1 1 30%;
+  max-width: 35%;
 
   color: #FFFFFF;
 

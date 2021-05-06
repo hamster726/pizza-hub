@@ -14,11 +14,12 @@ const CardContainer = styled.div`
 const ImageContainer = styled.div`
   margin: 0 auto;
   width: 100%;
-  max-width: 292px;
+  max-width: 270px;
 `;
 
 const CardImage = styled.img`
-  margin-left: 25px; // pizza have strange position on images
+  margin-left: 10px; // pizza have strange position on images
+  width: 100%;
 `;
 
 const CardTitle = styled.h3`
@@ -81,7 +82,7 @@ const InputButton = styled.input`
   opacity: 0;
   width: 0;
   &[type="radio"]:checked + ${Label} {
-    background: white;  
+    background: white;
   }
 `;
 
