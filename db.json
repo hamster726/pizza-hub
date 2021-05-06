@@ -1,0 +1,164 @@
+{
+  "catalog": [
+    {
+      "id": 1,
+      "key": "cheeseburger-pizza",
+      "img": "https://dodopizza-a.akamaihd.net/static/Img/Products/8a813e3b734e457c848a60fc70a100d5_366x366.jpeg",
+      "name": "Чізбургер піца",
+      "pizzaKit": {
+        "doughSlim": true,
+        "doughFat": true,
+        "small": true,
+        "middle": true,
+        "large": false
+      },
+      "pizzaParams": {
+        "meat": true,
+        "grill": false,
+        "spice": false,
+        "popularity": 10,
+        "price": 99
+      }
+    },
+    {
+      "id": 2,
+      "key": "cheese-pizza",
+      "img": "https://dodopizza-a.akamaihd.net/static/Img/Products/38a9d286399345c7a560fb649e09e8b4_366x366.jpeg",
+      "name": "Сирна",
+      "pizzaKit": {
+        "doughSlim": true,
+        "doughFat": true,
+        "small": true,
+        "middle": true,
+        "large": false
+      },
+      "pizzaParams": {
+        "meat": true,
+        "grill": false,
+        "spice": false,
+        "popularity": 6,
+        "price": 106
+      }
+    },
+    {
+      "id": 3,
+      "key": "peperoni-pizza",
+      "img": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/1df00c72-f3fd-4d4e-8537-3ff74035c2dc.jpg",
+      "name": "Пепероні",
+      "pizzaKit": {
+        "doughSlim": true,
+        "doughFat": true,
+        "small": true,
+        "middle": true,
+        "large": false
+      },
+      "pizzaParams": {
+        "meat": true,
+        "grill": false,
+        "spice": false,
+        "popularity": 5,
+        "price": 120
+      }
+    },
+    {
+      "id": 4,
+      "key": "pesto-pizza",
+      "img": "https://dodopizza-a.akamaihd.net/static/Img/Products/32ab88d1819048e285a91d91b9ef4451_366x366.jpeg",
+      "name": "Песто",
+      "pizzaKit": {
+        "doughSlim": true,
+        "doughFat": true,
+        "small": true,
+        "middle": true,
+        "large": false
+      },
+      "pizzaParams": {
+        "meat": true,
+        "grill": false,
+        "spice": false,
+        "popularity": 5,
+        "price": 135
+      }
+    },
+    {
+      "id": 5,
+      "key": "four-cheese-pizza",
+      "img": "https://dodopizza-a.akamaihd.net/static/Img/Products/f2e043398dad4bd5b42f4ef1990439c2_366x366.jpeg",
+      "name": "Чотири сира",
+      "pizzaKit": {
+        "doughSlim": true,
+        "doughFat": true,
+        "small": true,
+        "middle": true,
+        "large": false
+      },
+      "pizzaParams": {
+        "meat": true,
+        "grill": false,
+        "spice": false,
+        "popularity": 5,
+        "price": 99
+      }
+    },
+    {
+      "id": 6,
+      "key": "supermeat-pizza",
+      "img": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/8b052931-395f-4b38-8af0-55f6fbd7c9e5.jpg",
+      "name": "Супер м'ясна",
+      "pizzaKit": {
+        "doughSlim": true,
+        "doughFat": true,
+        "small": true,
+        "middle": true,
+        "large": false
+      },
+      "pizzaParams": {
+        "meat": true,
+        "grill": false,
+        "spice": false,
+        "popularity": 5,
+        "price": 130
+      }
+    },
+    {
+      "id": 7,
+      "key": "baked-apple-pizza",
+      "img": "https://dodopizza-a.akamaihd.net/static/Img/Products/de3aa884d63f43ac86fde8aa60d0b762_366x366.jpeg",
+      "name": "Запечене яблоко",
+      "pizzaKit": {
+        "doughSlim": true,
+        "doughFat": true,
+        "small": true,
+        "middle": true,
+        "large": false
+      },
+      "pizzaParams": {
+        "meat": true,
+        "grill": false,
+        "spice": false,
+        "popularity": 5,
+        "price": 130
+      }
+    },
+    {
+      "id": 8,
+      "key": "mexican-pizza",
+      "img": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/dc5dc4e9-932a-4abf-9472-dfb6326ea9ee.jpg",
+      "name": "Мексиканська",
+      "pizzaKit": {
+        "doughSlim": true,
+        "doughFat": true,
+        "small": true,
+        "middle": true,
+        "large": false
+      },
+      "pizzaParams": {
+        "meat": true,
+        "grill": false,
+        "spice": false,
+        "popularity": 5,
+        "price": 122
+      }
+    }
+  ]
+}
