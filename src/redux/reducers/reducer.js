@@ -1,127 +1,75 @@
+import {getCatalogAPI} from "../../api/api";
 import {
-  GET_ALL_POSTS,
-  GET_POST,
-  CREATE_NEW_POST,
-  UPDATE_POST,
-  DELETE_POST,
-  UPDATE_COMMENTS,
-  CREATE_COMMENT,
-  IS_LOADED,
+  GET_CATALOG,
+  ADD_TO_CART,
+  DELETE_FROM_CART,
+  CLEAR_CART,
+  SORT_BY,
+  FILTER_BY,
+  UPDATE_PRICE,
+  UPDATE_ORDER_SIZE,
+  IS_LOADING
 } from "../types";
-
-import axios from "axios";
 import {
-  getAllPosts,
-  isLoaded,
-  getPost as getSinglePost,
-  updateComments,
+  getCatalog,
+  addToCart,
+  deleteFromCart,
+  clearCart,
+  sortBy,
+  filterBy,
+  updatePrice,
+  updateOrderSize,
+  isLoading
 } from "../actions/actions";
 
 const initialState = {
-  posts: [],
-  comments: [],
-  isLoaded: true,
-  currentPost: undefined,
+  catalog: [],
+  sortedCatalog: [],
+  sortBy: [],
+  filterBy: [],
+  sumPrice: 0,
+  cart: [],
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_ALL_POSTS: {
+    case GET_CATALOG: {
       return {
         ...state,
-        posts: action.payload,
+        catalog: action.payload,
       };
     }
-    case GET_POST: {
-      return {
-        ...state,
-        currentPost: action.payload,
-      };
-    }
-    case CREATE_NEW_POST: {
-    }
-    case UPDATE_POST: {
-    }
-    case DELETE_POST: {
-    }
-    case UPDATE_COMMENTS: {
-      return {
-        ...state,
-        comments: action.payload,
-      };
-    }
-    case CREATE_COMMENT: {
-    }
+    case ADD_TO_CART: {
 
-    case IS_LOADED: {
       return {
         ...state,
-        isLoaded: action.payload,
+        catalog: action.payload,
       };
     }
-
+    case DELETE_FROM_CART: {
+      return {
+        ...state,
+        catalog: action.payload,
+      };
+    }
     default:
       console.log("default dispatch", action);
-      return state;
+      return {
+        ...state
+      }
   }
 };
 
-export const getPosts = () => async (dispatch) => {
-  dispatch(isLoaded(false));
+// THUNK ABOUT IT
 
-  const response = await axios
-    .get(`https://simple-blog-api.crew.red/posts`)
-    .then((res) => {
-      console.log("posts dispatching");
-      dispatch(getAllPosts(res.data));
-      dispatch(isLoaded(true));
-      console.log("posts getted", res.data);
-    });
+export const loadCatalog = () => async (dispatch) => {
+  dispatch(isLoading(true));
+  getCatalogAPI().then((res) => {
+    dispatch(getCatalog(res.data));
+    dispatch(isLoading(false));
+  })
 };
 
-export const getPost = (postId) => {
-  return (dispatch) => {
-    dispatch(isLoaded(false));
-    const response = axios
-      .get(`https://simple-blog-api.crew.red/posts/${postId}?_embed=comments`)
-      .then((res) => {
-        dispatch(getSinglePost(res.data));
-        dispatch(updateComments(res.data.comments));
-        dispatch(isLoaded(true));
-      });
-  };
-};
 
-export const deletePost = (postId) => {
-  return async (dispatch) => {
-    const response = await axios
-      .delete(`https://simple-blog-api.crew.red/posts/${postId}`)
-      .catch((e) => console.log(`Error with deleting post: ${e}`));
-  };
-};
-
-export const addComment = (postId, commentValue) => {
-  return async (dispatch) => {
-    const response = await axios.post(
-      "https://simple-blog-api.crew.red/comments",
-      {
-        postId: postId,
-        body: commentValue,
-      }
-    );
-    dispatch(getPost(postId));
-  };
-};
-
-export const addPost = (newPostTitle, newPostBody) => {
-  return async (dispatch) => {
-    const data = {
-      title: newPostTitle,
-      body: newPostBody,
-    };
-    const response = axios.post("https://simple-blog-api.crew.red/posts", data);
-    dispatch(getPosts());
-  };
-};
 
 export default reducer;

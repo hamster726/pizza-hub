@@ -1,78 +1,83 @@
 import {
-  GET_ALL_POSTS,
-  GET_POST,
-  CREATE_NEW_POST,
-  UPDATE_POST,
-  DELETE_POST,
-  UPDATE_COMMENTS,
-  CREATE_COMMENT,
-  IS_LOADED,
+  GET_CATALOG,
+  ADD_TO_CART,
+  DELETE_FROM_CART,
+  CLEAR_CART,
+  SORT_BY,
+  FILTER_BY,
+  UPDATE_PRICE,
+  UPDATE_ORDER_SIZE,
+  IS_LOADING
 } from "../types";
 
-const getAllPosts = (posts) => {
+const getCatalog = (catalog) => {
   return {
-    type: GET_ALL_POSTS,
-    payload: posts,
+    type: GET_CATALOG,
+    payload: catalog,
   };
 };
 
-const getPost = (post) => {
+const addToCart = (pizza) => {
   return {
-    type: GET_POST,
-    payload: post,
+    type: ADD_TO_CART,
+     payload: pizza,
   };
 };
 
-const createNewPost = (data) => {
+const deleteFromCart = (pizza) => {
   return {
-    type: CREATE_NEW_POST,
-    payload: data,
-  };
-};
+    type: DELETE_FROM_CART,
+    payload: pizza
+  }
+}
 
-const updatePost = (data) => {
+const clearCart = () => {
   return {
-    type: UPDATE_POST,
-    payload: data,
-  };
-};
+    type: CLEAR_CART
+  }
+}
 
-const deletePost = (postId) => {
+const sortBy = (value) => {
   return {
-    type: DELETE_POST,
-    payload: postId,
-  };
-};
+    type: SORT_BY,
+    payload: value
+  }
+}
 
-const updateComments = (comments) => {
+const filterBy = (value) => {
   return {
-    type: UPDATE_COMMENTS,
-    payload: comments,
-  };
-};
+    type: FILTER_BY,
+    payload: value
+  }
+}
 
-const createComment = (postId) => {
+const updatePrice = () => {
   return {
-    type: CREATE_COMMENT,
-    payload: postId,
-  };
-};
+    type: UPDATE_PRICE,
+  }
+}
 
-const isLoaded = (status) => {
+const updateOrderSize = () => {
   return {
-    type: IS_LOADED,
-    payload: status,
-  };
-};
+    type: UPDATE_ORDER_SIZE
+  }
+}
 
+const isLoading = (value) => {
+  return {
+    type: IS_LOADING,
+    payload: value
+  }
+}
 
 export {
-  getAllPosts,
-  getPost,
-  createNewPost,
-  updatePost,
-  deletePost,
-  updateComments,
-  createComment,
-  isLoaded,
+  getCatalog,
+  addToCart,
+  deleteFromCart,
+  clearCart,
+  sortBy,
+  filterBy,
+  updatePrice,
+  updateOrderSize,
+  isLoading
 };
