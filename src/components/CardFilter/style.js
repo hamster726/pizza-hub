@@ -73,7 +73,7 @@ const DropdownContainer = styled.div`
 
 const DropdownMenu = styled.div`
   position: absolute;
-  right: 0;
+  left: 0;
   top: 30px;
   display: flex;
   flex-direction: column;

@@ -28,7 +28,7 @@ const initialState = {
   sortBy: [],
   filterBy: [],
   sumPrice: 0,
-  cart: [],
+  cart: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -40,10 +40,16 @@ const reducer = (state = initialState, action) => {
       };
     }
     case ADD_TO_CART: {
+      const updatedCart = state.cart;
+
+      const pizzaKey = action.payload[0];
+      const pizzaCount = action.payload[1];
+
+      updatedCart[pizzaKey] = pizzaCount;
 
       return {
         ...state,
-        catalog: action.payload,
+        cart: updatedCart,
       };
     }
     case DELETE_FROM_CART: {

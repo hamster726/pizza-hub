@@ -36,14 +36,16 @@ const SelectorWrapper = styled.div`
   background: #f3f3f3;
   border-radius: 10px;
   min-height: 85px;
+  min-width: 240px;
   height: 50%;
   margin-top: 20px;
+  
 `;
 
 const SelectorList = styled.ul`
   list-style-type: none;
   padding: 0;
-  margin: 10px;
+  margin: 10px 5px;
   
   display: flex;
 `;
@@ -56,6 +58,7 @@ const List = styled.li`
   align-items: center;
   margin: 0 5px;
   height: 40px;
+  box-shadow: 0px 2px 4px rgb(0 0 0 / 4%);
 `;
 
 

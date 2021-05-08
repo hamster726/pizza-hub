@@ -16,18 +16,27 @@ import {
   MinusButton,
   PlusButton,
 } from "./cardStyle";
+import {useDispatch} from "react-redux";
+import {addToCart} from "../../redux/actions/actions";
 
 const CardItem = ({ params }) => {
   const [quantity, setQuantity] = useState(0);
 
+  const dispatch = useDispatch();
+
+  const addPizzaToCart = () => {
+    dispatch(addToCart([params.key, quantity +1]));
+    setQuantity(quantity + 1);
+  }
+
   const renderAddButton = () => {
-    if (quantity === 0) return <AddToCartButton onClick={() => setQuantity(quantity + 1)}>Додати</AddToCartButton>;
+    if (quantity === 0) return <AddToCartButton onClick={addPizzaToCart}>Додати</AddToCartButton>;
 
     return (
       <QuantityOfPizza>
-        <MinusButton onClick={() => setQuantity(quantity - 1)} />
+        <MinusButton onClick={addPizzaToCart} />
         {quantity}
-        <PlusButton onClick={() => setQuantity(quantity + 1)} />
+        <PlusButton onClick={addPizzaToCart} />
       </QuantityOfPizza>
     );
   };

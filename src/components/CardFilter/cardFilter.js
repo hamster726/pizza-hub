@@ -1,12 +1,24 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Button, ButtonContainer, DropdownActiveItem, DropdownContainer, DropdownItem, DropdownMenu} from "./style";
 
-const CardFilter = () => {
+const CardFilter = React.memo(function CardFiler() {
 
   const [dropdownOpened, setDropdown] = useState(false);
   const [activeSorter, setSorter] = useState("популярності");
   const [activeFilter, setFilter] = useState('Всі');
 
+  const sortRef = useRef();
+
+  React.useEffect(() => {
+    document.body.addEventListener('click', handleOutsideClick);
+  }, []);
+
+  const handleOutsideClick = (event) => {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (!path.includes(sortRef.current)) {
+      setDropdown(false);
+    }
+  };
 
   const setActiveSorter = (e) => {
     setSorter(e.target.innerText);
@@ -27,7 +39,7 @@ const CardFilter = () => {
 
 
     return (
-      <DropdownContainer onClick={(e) => toggleDropdown(e)} active={dropdownOpened}>
+      <DropdownContainer ref={sortRef} onClick={(e) => toggleDropdown(e)} active={dropdownOpened}>
         Cортувати по: <DropdownActiveItem>{activeSorter}</DropdownActiveItem>
         <DropdownMenu active={dropdownOpened}>
           {sorters.map((item) => {
@@ -54,14 +66,14 @@ const CardFilter = () => {
   }
 
   return (
-    <>
+    <div>
       <ButtonContainer>
         {renderMenuButtons()}
         {renderDropDownItems()}
       </ButtonContainer>
 
-    </>
+    </div>
   )
-}
+})
 
 export default CardFilter;

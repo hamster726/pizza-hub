@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Logo from "./logo.svg"
 import {
   Brand,
@@ -16,7 +16,7 @@ const Header = () => {
   const {price, cartCount} = useSelector((state) => {
     return {
       price: state.sumPrice,
-      cartCount: state.cart.length
+      cartCount: Object.values(state.cart)
     }
   });
 
