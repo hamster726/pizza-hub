@@ -14,8 +14,9 @@
       },
       "pizzaParams": {
         "meat": true,
-        "grill": false,
+        "grill": true,
         "spice": false,
+        "vegan": false,
         "popularity": 10,
         "price": 99
       }
@@ -33,9 +34,10 @@
         "large": false
       },
       "pizzaParams": {
-        "meat": true,
+        "meat": false,
         "grill": false,
         "spice": false,
+        "vegan": true,
         "popularity": 6,
         "price": 106
       }
@@ -56,6 +58,7 @@
         "meat": true,
         "grill": false,
         "spice": false,
+        "vegan": false,
         "popularity": 5,
         "price": 120
       }
@@ -73,9 +76,10 @@
         "large": false
       },
       "pizzaParams": {
-        "meat": true,
+        "meat": false,
         "grill": false,
         "spice": false,
+        "vegan": true,
         "popularity": 5,
         "price": 135
       }
@@ -93,9 +97,10 @@
         "large": false
       },
       "pizzaParams": {
-        "meat": true,
+        "meat": false,
         "grill": false,
         "spice": false,
+        "vegan": true,
         "popularity": 5,
         "price": 99
       }
@@ -114,8 +119,9 @@
       },
       "pizzaParams": {
         "meat": true,
-        "grill": false,
+        "grill": true,
         "spice": false,
+        "vegan": false,
         "popularity": 5,
         "price": 130
       }
@@ -133,9 +139,10 @@
         "large": false
       },
       "pizzaParams": {
-        "meat": true,
+        "meat": false,
         "grill": false,
         "spice": false,
+        "vegan": true,
         "popularity": 5,
         "price": 130
       }
@@ -155,7 +162,7 @@
       "pizzaParams": {
         "meat": true,
         "grill": false,
-        "spice": false,
+        "spice": true,
         "popularity": 5,
         "price": 122
       }

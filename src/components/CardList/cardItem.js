@@ -16,25 +16,45 @@ import {
   MinusButton,
   PlusButton,
 } from "./cardStyle";
-import {useDispatch} from "react-redux";
-import {addToCart} from "../../redux/actions/actions";
+import { useDispatch } from "react-redux";
+import {addToCart, deleteFromCart} from "../../redux/actions/actions";
 
-const CardItem = ({ params }) => {
+const CardItem = React.memo(function CardItem({ params }) {
   const [quantity, setQuantity] = useState(0);
+  const [dough, setDoug] = useState("slim");
+  const [size, setSize] = useState("small");
 
   const dispatch = useDispatch();
 
   const addPizzaToCart = () => {
-    dispatch(addToCart([params.key, quantity +1]));
+    const pizzaParams = {
+      key: params.key,
+      dough: dough,
+      size: size,
+      price: params.pizzaParams.price
+  };
+    dispatch(addToCart(pizzaParams));
     setQuantity(quantity + 1);
-  }
+  };
+
+  const removePizzaFromCart = () => {
+    const pizzaParams = {
+      key: params.key,
+      dough: dough,
+      size: size,
+      price: params.pizzaParams.price
+    };
+    dispatch(deleteFromCart(pizzaParams));
+    setQuantity(quantity - 1);
+  };
 
   const renderAddButton = () => {
-    if (quantity === 0) return <AddToCartButton onClick={addPizzaToCart}>Додати</AddToCartButton>;
+    if (quantity === 0)
+      return <AddToCartButton onClick={addPizzaToCart}>Додати</AddToCartButton>;
 
     return (
       <QuantityOfPizza>
-        <MinusButton onClick={addPizzaToCart} />
+        <MinusButton onClick={removePizzaFromCart} />
         {quantity}
         <PlusButton onClick={addPizzaToCart} />
       </QuantityOfPizza>
@@ -54,7 +74,8 @@ const CardItem = ({ params }) => {
               type="radio"
               id={`slim-dough-${params.key}`}
               name={`dough-${params.key}`}
-              checked
+              defaultChecked
+              onChange={() => setDoug("slim")}
             />
             <Label for={`slim-dough-${params.key}`}>тонке</Label>
           </List>
@@ -63,6 +84,7 @@ const CardItem = ({ params }) => {
               type="radio"
               id={`fat-dough-${params.key}`}
               name={`dough-${params.key}`}
+              onChange={() => setDoug("fat")}
             />
             <Label for={`fat-dough-${params.key}`}>традиційне</Label>
           </List>
@@ -73,17 +95,17 @@ const CardItem = ({ params }) => {
               type="radio"
               id={`25sm-size-${params.key}`}
               name={`size-${params.key}`}
-              disabled
+              onChange={() => setSize("small")}
+              defaultChecked
             />
-            <Label for={`25sm-size-${params.key}`} disabled>
-              25 см
-            </Label>
+            <Label for={`25sm-size-${params.key}`}>25 см</Label>
           </List>
           <List>
             <InputButton
               type="radio"
               id={`30sm-size-${params.key}`}
               name={`size-${params.key}`}
+              onChange={() => setSize("middle")}
             />
             <Label for={`30sm-size-${params.key}`}>30 см</Label>
           </List>
@@ -92,6 +114,7 @@ const CardItem = ({ params }) => {
               type="radio"
               id={`35sm-size-${params.key}`}
               name={`size-${params.key}`}
+              onChange={() => setSize("large")}
             />
             <Label for={`35sm-size-${params.key}`}>35 см</Label>
           </List>
@@ -103,6 +126,6 @@ const CardItem = ({ params }) => {
       </PriceContainer>
     </CardContainer>
   );
-};
+});
 
 export default CardItem;

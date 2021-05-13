@@ -5,18 +5,23 @@ import CardItem from "./cardItem";
 import { CardListContainer } from "./cardListStyle";
 import { loadCatalog } from "../../redux/reducers/reducer";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
+import LoadingPizzaBlock from "../LoadingBlock/loadingPizzaBlock";
 
 const CardList = () => {
   const dispatch = useDispatch();
-  const catalog = useSelector(state => state.catalog);
+  const { catalog, isLoading } = useSelector((state) => state);
 
   useEffect(() => {
     dispatch(loadCatalog());
   }, []);
 
   const renderPizzaList = () => {
+
+    if (isLoading) {
+      return Array(12).fill(0).map((_, index) => <LoadingPizzaBlock key={index}/>)
+    }
     return catalog.map((pizza) => {
-      return <CardItem params={pizza} />;
+      return <CardItem key={pizza.key} params={pizza} />;
     });
   };
 

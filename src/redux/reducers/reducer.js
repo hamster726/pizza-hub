@@ -1,4 +1,4 @@
-import {getCatalogAPI} from "../../api/api";
+import { getCatalogAPI } from "../../api/api";
 import {
   GET_CATALOG,
   ADD_TO_CART,
@@ -8,7 +8,7 @@ import {
   FILTER_BY,
   UPDATE_PRICE,
   UPDATE_ORDER_SIZE,
-  IS_LOADING
+  IS_LOADING,
 } from "../types";
 import {
   getCatalog,
@@ -19,16 +19,17 @@ import {
   filterBy,
   updatePrice,
   updateOrderSize,
-  isLoading
+  isLoading,
 } from "../actions/actions";
 
 const initialState = {
   catalog: [],
   sortedCatalog: [],
-  sortBy: [],
-  filterBy: [],
+  sortBy: "popularity",
+  filterBy: "all",
   sumPrice: 0,
   cart: {},
+  isLoading: true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -40,29 +41,54 @@ const reducer = (state = initialState, action) => {
       };
     }
     case ADD_TO_CART: {
-      const updatedCart = state.cart;
+      const cartCopy = Object.assign({}, state.cart);
+      const pizzaCopy = Object.assign({}, action.payload);
+      const pizzaKey = `${pizzaCopy.key}-${pizzaCopy.dough}-${pizzaCopy.size}`;
 
-      const pizzaKey = action.payload[0];
-      const pizzaCount = action.payload[1];
+      if (Object.keys(cartCopy).includes(pizzaKey)) {
+        pizzaCopy.quantity = cartCopy[pizzaKey].quantity + 1;
+      } else {
+        pizzaCopy.quantity = 1;
+      }
 
-      updatedCart[pizzaKey] = pizzaCount;
+      cartCopy[pizzaKey] = pizzaCopy;
 
       return {
         ...state,
-        cart: updatedCart,
+        cart: cartCopy,
       };
     }
     case DELETE_FROM_CART: {
+      const cartCopy = Object.assign({}, state.cart);
+      const pizzaCopy = Object.assign({}, action.payload);
+      const pizzaKey = `${pizzaCopy.key}-${pizzaCopy.dough}-${pizzaCopy.size}`;
+
+      if (cartCopy[pizzaKey].quantity === 1) {
+        delete cartCopy[pizzaKey];
+      } else {
+        pizzaCopy.quantity = cartCopy[pizzaKey].quantity - 1;
+      }
+
+      cartCopy[pizzaKey] = pizzaCopy;
+
       return {
         ...state,
-        catalog: action.payload,
+        cart: cartCopy,
       };
     }
+
+    case IS_LOADING: {
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    }
+
     default:
       console.log("default dispatch", action);
       return {
-        ...state
-      }
+        ...state,
+      };
   }
 };
 
@@ -70,12 +96,15 @@ const reducer = (state = initialState, action) => {
 
 export const loadCatalog = () => async (dispatch) => {
   dispatch(isLoading(true));
-  getCatalogAPI().then((res) => {
-    dispatch(getCatalog(res.data));
-    dispatch(isLoading(false));
-  })
+  await getCatalogAPI()
+    .then((res) => {
+      dispatch(getCatalog(res.data));
+      dispatch(isLoading(false));
+    })
+    .catch((e) => {
+      console.error("Не удается получить данные", e);
+      setTimeout(() => loadCatalog()(dispatch), 2000);
+    });
 };
-
-
 
 export default reducer;

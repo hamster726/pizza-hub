@@ -1,11 +1,14 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Button, ButtonContainer, DropdownActiveItem, DropdownContainer, DropdownItem, DropdownMenu} from "./style";
 
-const CardFilter = React.memo(function CardFiler() {
+const CardFilter = React.memo(function CardFilter() {
 
   const [dropdownOpened, setDropdown] = useState(false);
   const [activeSorter, setSorter] = useState("популярності");
   const [activeFilter, setFilter] = useState('Всі');
+
+  const sorters = ["популярності", "ціні", "алфавіту"];
+  const filters = ["Всі", "М'ясні", "Веганська", "Гриль", "Гострі"];
 
   const sortRef = useRef();
 
@@ -34,10 +37,6 @@ const CardFilter = React.memo(function CardFiler() {
 
 
   const renderDropDownItems = () => {
-
-    const sorters = ["популярності", "ціні", "алфавіту"];
-
-
     return (
       <DropdownContainer ref={sortRef} onClick={(e) => toggleDropdown(e)} active={dropdownOpened}>
         Cортувати по: <DropdownActiveItem>{activeSorter}</DropdownActiveItem>
@@ -53,13 +52,11 @@ const CardFilter = React.memo(function CardFiler() {
   }
 
   const renderMenuButtons = () => {
-    const filters = ["Всі", "М'ясні", "Веганська", "Гриль", "Гострі", "Закриті"];
-
     return (
       <>
         {filters.map(item => {
-          if (item === activeFilter) return <Button active onClick={e => setActiveFilter(e)}>{item}</Button>
-          else return <Button onClick={e => setActiveFilter(e)}>{item}</Button>
+          if (item === activeFilter) return <Button key={item} active onClick={e => setActiveFilter(e)}>{item}</Button>
+          else return <Button key={item} onClick={e => setActiveFilter(e)}>{item}</Button>
         })}
       </>
     )

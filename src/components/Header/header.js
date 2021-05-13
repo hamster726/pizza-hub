@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Logo from "./logo.svg"
 import {
   Brand,
@@ -13,12 +13,30 @@ import {
 import {useSelector} from "react-redux";
 
 const Header = () => {
-  const {price, cartCount} = useSelector((state) => {
+  const {cart} = useSelector((state) => {
     return {
-      price: state.sumPrice,
-      cartCount: Object.values(state.cart)
+      cart: state.cart
     }
   });
+
+  const [price, setPrice] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    const cartValues = Object.values(cart);
+    if (cartValues.length === 0) return 0;
+
+    let countCart = 0;
+    let countPrice = 0;
+    for (let i = 0; i < cartValues.length; i ++) {
+      countCart += cartValues[i].quantity;
+      countPrice += cartValues[i].price * cartValues[i].quantity;
+    }
+
+    setPrice(countPrice);
+    setCartCount(countCart);
+    console.log('check')
+  })
 
   return (
     <HeaderContainer>
