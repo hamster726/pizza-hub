@@ -108,7 +108,7 @@ const CartCounter = styled.div`
   &:before {
     content: "";
     position: absolute;
-    left: 15px;
+    left: 5px;
     background-image: url(${CartIco});
     width: 16px;
     height: 16px;

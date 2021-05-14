@@ -16,6 +16,9 @@ const CardList = () => {
   }, []);
 
   const renderPizzaList = () => {
+    const sorters = ["популярності", "ціні", "алфавіту"];
+    const filters = ["Всі", "М'ясні", "Веганська", "Гриль", "Гострі"];
+
 
     if (isLoading) {
       return Array(12).fill(0).map((_, index) => <LoadingPizzaBlock key={index}/>)

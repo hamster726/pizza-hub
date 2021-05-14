@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import {
   AddToCartButton,
   CardContainer,
@@ -16,15 +16,27 @@ import {
   MinusButton,
   PlusButton,
 } from "./cardStyle";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addToCart, deleteFromCart} from "../../redux/actions/actions";
 
 const CardItem = React.memo(function CardItem({ params }) {
+
   const [quantity, setQuantity] = useState(0);
   const [dough, setDoug] = useState("slim");
   const [size, setSize] = useState("small");
 
+  const pizzaKey = `${params.key}-${dough}-${size}`;
+
+  const {cart} = useSelector(state => state);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (cart[pizzaKey]) {
+      setQuantity(cart[pizzaKey].quantity)
+    } else setQuantity(0);
+  })
+
+  console.log('catalog rerendered', pizzaKey);
 
   const addPizzaToCart = () => {
     const pizzaParams = {

@@ -25,8 +25,8 @@ import {
 const initialState = {
   catalog: [],
   sortedCatalog: [],
-  sortBy: "popularity",
-  filterBy: "all",
+  sortBy: "популярності",
+  filterBy: "Всі",
   sumPrice: 0,
   cart: {},
   isLoading: true,
@@ -67,9 +67,8 @@ const reducer = (state = initialState, action) => {
         delete cartCopy[pizzaKey];
       } else {
         pizzaCopy.quantity = cartCopy[pizzaKey].quantity - 1;
+        cartCopy[pizzaKey] = pizzaCopy;
       }
-
-      cartCopy[pizzaKey] = pizzaCopy;
 
       return {
         ...state,
@@ -81,6 +80,20 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: action.payload,
+      };
+    }
+
+    case FILTER_BY: {
+      return {
+        ...state,
+        filterBy: action.payload,
+      };
+    }
+
+    case SORT_BY: {
+      return {
+        ...state,
+        sortBy: action.payload,
       };
     }
 

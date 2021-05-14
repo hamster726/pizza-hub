@@ -35,7 +35,6 @@ const Header = () => {
 
     setPrice(countPrice);
     setCartCount(countCart);
-    console.log('check')
   })
 
   return (
@@ -50,7 +49,7 @@ const Header = () => {
         </BrandContainer>
       </LogoWrapper>
       <CartButton href="#">
-        <Price>{price} грн</Price>
+        <Price>{price.toLocaleString()} грн</Price>
         <CartCounter>{cartCount}</CartCounter>
       </CartButton>
     </HeaderContainer>
