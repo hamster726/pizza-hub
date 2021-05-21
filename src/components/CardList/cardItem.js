@@ -36,8 +36,6 @@ const CardItem = React.memo(function CardItem({ params }) {
     } else setQuantity(0);
   })
 
-  console.log('catalog rerendered', pizzaKey);
-
   const addPizzaToCart = () => {
     const pizzaParams = {
       key: params.key,

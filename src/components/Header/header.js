@@ -12,6 +12,7 @@ import {
 } from "./style";
 import {useSelector} from "react-redux";
 
+
 const Header = () => {
   const {cart} = useSelector((state) => {
     return {
@@ -23,8 +24,12 @@ const Header = () => {
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
+    console.log('effect');
     const cartValues = Object.values(cart);
-    if (cartValues.length === 0) return 0;
+    if (cartValues.length === 0) {
+      setPrice(0);
+      setCartCount(0);
+    }
 
     let countCart = 0;
     let countPrice = 0;
@@ -39,7 +44,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <LogoWrapper href="/">
+      <LogoWrapper to="/">
         <LogoContainer>
           <LogoImg src={Logo} alt="pizza hub logo" />
         </LogoContainer>
@@ -48,10 +53,10 @@ const Header = () => {
           <BrandDescr>найсмачніша піца у світі</BrandDescr>
         </BrandContainer>
       </LogoWrapper>
-      <CartButton href="#">
-        <Price>{price.toLocaleString()} грн</Price>
-        <CartCounter>{cartCount}</CartCounter>
-      </CartButton>
+        <CartButton to="/cart">
+          <Price>{price.toLocaleString()} грн</Price>
+          <CartCounter>{cartCount}</CartCounter>
+        </CartButton>
     </HeaderContainer>
   );
 };

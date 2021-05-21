@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import CartIco from "../../img/icons/cart-icon.svg"
+import {Link} from "react-router-dom";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -12,7 +13,7 @@ const HeaderContainer = styled.header`
   border-bottom: 2px solid #F7F7F7;;
 `
 
-const LogoWrapper = styled.a`
+const LogoWrapper = styled(Link)`
   display: flex;
   align-items: center;
 `
@@ -54,7 +55,7 @@ const BrandDescr = styled.div`
   color: #7B7B7B;
 `
 
-const CartButton = styled.a`
+const CartButton = styled(Link)`
   position: relative;
   display: flex;
   justify-content: space-between;
