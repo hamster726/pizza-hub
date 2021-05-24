@@ -1,10 +1,11 @@
 import React from "react";
+import EmptyCart from "./emptyCart";
 
 const Cart = () => {
 
   return (
     <div>
-      Cart!
+      <EmptyCart/>
     </div>
   )
 }

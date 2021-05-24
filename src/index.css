@@ -8,6 +8,20 @@
 
 body {
   background-color: #FFDF8C !important;
+
+}
+body::-webkit-scrollbar {
+  width: 0.75vw;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #aaaaaa95;
+  outline: none;
 }
 
 #root {
