@@ -13,7 +13,6 @@ const Container = styled.div`
 `;
 const Title = styled.h1`
   font-size: 32px;
-  margin-top: 50px;
 `;
 const Description = styled.div`
   font-size: 18px;
@@ -28,7 +27,7 @@ const BackToMenuButton = styled(Link)`
   border-radius: 30px;
 
   padding: 0 30px;
-  margin-top: 100px;
+  margin-top: 50px;
 
   font-style: normal;
   font-weight: bold;

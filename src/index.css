@@ -33,7 +33,7 @@ body::-webkit-scrollbar-thumb {
   max-width: 1340px;
 
   padding: 0 48px 0 67px;
-  margin: 48px auto;
+  margin: 0 auto;
 
   background-color: white;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
