@@ -4,24 +4,23 @@ import { Title } from "../../styles/globalStyled";
 import CardItem from "./cardItem";
 import { CardListContainer } from "./cardListStyle";
 import { loadCatalog } from "../../redux/reducers/reducer";
-import {shallowEqual, useDispatch, useSelector} from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import LoadingPizzaBlock from "../LoadingBlock/loadingPizzaBlock";
 
 const CardList = () => {
   const dispatch = useDispatch();
-  const { catalog, isLoading } = useSelector((state) => state);
+  const { catalog, isLoading, sorters, filters } = useSelector((state) => state);
 
   useEffect(() => {
     dispatch(loadCatalog());
   }, []);
 
   const renderPizzaList = () => {
-    const sorters = ["популярності", "ціні", "алфавіту"];
-    const filters = ["Всі", "М'ясні", "Веганська", "Гриль", "Гострі"];
-
 
     if (isLoading) {
-      return Array(12).fill(0).map((_, index) => <LoadingPizzaBlock key={index}/>)
+      return Array(12)
+        .fill(0)
+        .map((_, index) => <LoadingPizzaBlock key={index} />);
     }
     return catalog.map((pizza) => {
       return <CardItem key={pizza.key} params={pizza} />;

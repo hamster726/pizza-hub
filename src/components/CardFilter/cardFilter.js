@@ -13,13 +13,11 @@ import {filterBy, sortBy} from "../../redux/actions/actions";
 const CardFilter = React.memo(function CardFilter() {
   const [dropdownOpened, setDropdown] = useState(false);
 
-  const sorters = ["популярності", "ціні", "алфавіту"];
-  const filters = ["Всі", "М'ясні", "Веганська", "Гриль", "Гострі"];
-
-  const { filter, sorter } = useSelector((state) => {
+  const {sorters, filters} = useSelector(state => state);
+  const { currentFilter, currentSorter } = useSelector((state) => {
     return {
-      filter: state.filterBy,
-      sorter: state.sortBy,
+      currentFilter: state.filterBy,
+      currentSorter: state.sortBy,
     }
   });
   const dispatch = useDispatch();
@@ -56,10 +54,10 @@ const CardFilter = React.memo(function CardFilter() {
         onClick={(e) => toggleDropdown(e)}
         active={dropdownOpened}
       >
-        Cортувати по: <DropdownActiveItem>{sorter}</DropdownActiveItem>
+        Cортувати по: <DropdownActiveItem>{currentSorter}</DropdownActiveItem>
         <DropdownMenu active={dropdownOpened}>
           {sorters.map((item) => {
-            if (item === sorter)
+            if (item === currentSorter)
               return (
                 <DropdownItem active onClick={(e) => setActiveSorter({item})}>
                   {item}
@@ -81,13 +79,13 @@ const CardFilter = React.memo(function CardFilter() {
     return (
       <>
         {filters.map((item) => {
-          if (item === filter)
+          if (item === currentFilter) {
             return (
               <Button key={item} active onClick={(e) => setActiveFilter(item)}>
                 {item}
               </Button>
             );
-          else
+          } else
             return (
               <Button key={item} onClick={(e) => setActiveFilter(item)}>
                 {item}

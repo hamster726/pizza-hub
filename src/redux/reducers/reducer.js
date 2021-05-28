@@ -25,11 +25,23 @@ import {
 const initialState = {
   catalog: [],
   sortedCatalog: [],
-  sortBy: "популярності",
-  filterBy: "Всі",
+  sortBy: "popularity",
+  filterBy: "all",
   sumPrice: 0,
   cart: {},
   isLoading: true,
+  sorters: [
+    { popularity: "популярності" },
+    { price: "ціні" },
+    { alphabet: "алфавіту" },
+  ],
+  filters: [
+    { all: "Всі" },
+    { meat: "М'ясні" },
+    { vegan: "Веганська" },
+    { grill: "Гриль" },
+    { spice: "Гострі" },
+  ],
 };
 
 const reducer = (state = initialState, action) => {

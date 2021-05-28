@@ -34,7 +34,7 @@ const CardItem = React.memo(function CardItem({ params }) {
     if (cart[pizzaKey]) {
       setQuantity(cart[pizzaKey].quantity)
     } else setQuantity(0);
-  })
+  });
 
   const addPizzaToCart = () => {
     const pizzaParams = {
