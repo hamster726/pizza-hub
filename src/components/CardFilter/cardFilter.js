@@ -1,4 +1,4 @@
-import React, {useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Button,
   ButtonContainer,
@@ -7,18 +7,18 @@ import {
   DropdownItem,
   DropdownMenu,
 } from "./style";
-import {useDispatch, useSelector} from "react-redux";
-import {filterBy, sortBy} from "../../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { filterBy, sortBy } from "../../redux/actions/actions";
 
 const CardFilter = React.memo(function CardFilter() {
   const [dropdownOpened, setDropdown] = useState(false);
 
-  const {sorters, filters} = useSelector(state => state);
+  const { sorters, filters } = useSelector((state) => state);
   const { currentFilter, currentSorter } = useSelector((state) => {
     return {
       currentFilter: state.filterBy,
       currentSorter: state.sortBy,
-    }
+    };
   });
   const dispatch = useDispatch();
 
@@ -37,11 +37,11 @@ const CardFilter = React.memo(function CardFilter() {
 
   const setActiveFilter = (item) => {
     dispatch(filterBy(item));
-  }
+  };
 
   const setActiveSorter = (item) => {
     dispatch(sortBy(item));
-  }
+  };
 
   const toggleDropdown = () => {
     setDropdown(!dropdownOpened);
@@ -54,19 +54,23 @@ const CardFilter = React.memo(function CardFilter() {
         onClick={(e) => toggleDropdown(e)}
         active={dropdownOpened}
       >
-        Cортувати по: <DropdownActiveItem>{currentSorter}</DropdownActiveItem>
+        Cортувати по:
+        <DropdownActiveItem>{currentSorter}</DropdownActiveItem>
         <DropdownMenu active={dropdownOpened}>
           {sorters.map((item) => {
-            if (item === currentSorter)
+            const objKey = Object.keys(item)[0];
+            const objValue = Object.values(item)[0];
+
+            if (objKey === currentSorter)
               return (
-                <DropdownItem active onClick={(e) => setActiveSorter({item})}>
-                  {item}
+                <DropdownItem active onClick={(e) => setActiveSorter(objKey)}>
+                  {objValue}
                 </DropdownItem>
               );
             else
               return (
-                <DropdownItem onClick={(e) => setActiveSorter({item})}>
-                  {item}
+                <DropdownItem onClick={(e) => setActiveSorter(objKey)}>
+                  {objValue}
                 </DropdownItem>
               );
           })}
@@ -79,16 +83,22 @@ const CardFilter = React.memo(function CardFilter() {
     return (
       <>
         {filters.map((item) => {
-          if (item === currentFilter) {
+          const objKey = Object.keys(item)[0];
+          const objValue = Object.values(item)[0];
+          if (objKey === currentFilter) {
             return (
-              <Button key={item} active onClick={(e) => setActiveFilter(item)}>
-                {item}
+              <Button
+                key={objKey}
+                active
+                onClick={(e) => setActiveFilter(objKey)}
+              >
+                {objValue}
               </Button>
             );
           } else
             return (
-              <Button key={item} onClick={(e) => setActiveFilter(item)}>
-                {item}
+              <Button key={objKey} onClick={(e) => setActiveFilter(objKey)}>
+                {objValue}
               </Button>
             );
         })}
