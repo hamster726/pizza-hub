@@ -25,7 +25,7 @@ import {
 const initialState = {
   catalog: [],
   sortedCatalog: [],
-  sortBy: "popularity",
+  sortBy: {popularity: "популярності"},
   filterBy: "all",
   sumPrice: 0,
   cart: {},

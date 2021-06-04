@@ -13,7 +13,6 @@ import CartIco from "../../img/empty-cart-img.svg"
 const EmptyCart = () => {
   return (
     <>
-      <Container>
         <Title>Кошик пустий 😕</Title>
         <Description>
           Скоріш за все, ви не замовляли ще піцу.
@@ -22,7 +21,6 @@ const EmptyCart = () => {
         </Description>
         <CartImg src={CartIco} alt="cart with human" />
         <BackToMenuButton to={"/"}>Повернутися назад</BackToMenuButton>
-      </Container>
     </>
   );
 };

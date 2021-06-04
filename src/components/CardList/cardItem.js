@@ -21,7 +21,6 @@ import {addToCart, deleteFromCart} from "../../redux/actions/actions";
 
 const CardItem = React.memo(function CardItem({ params }) {
 
-  const [quantity, setQuantity] = useState(0);
   const [dough, setDoug] = useState("slim");
   const [size, setSize] = useState("small");
 
@@ -30,21 +29,17 @@ const CardItem = React.memo(function CardItem({ params }) {
   const {cart} = useSelector(state => state);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (cart[pizzaKey]) {
-      setQuantity(cart[pizzaKey].quantity)
-    } else setQuantity(0);
-  });
+  const quantity = cart[pizzaKey] ? cart[pizzaKey].quantity : 0;
 
   const addPizzaToCart = () => {
     const pizzaParams = {
       key: params.key,
       dough: dough,
       size: size,
-      price: params.pizzaParams.price
-  };
+      price: params.pizzaParams.price,
+      img: params.img
+    };
     dispatch(addToCart(pizzaParams));
-    setQuantity(quantity + 1);
   };
 
   const removePizzaFromCart = () => {
@@ -52,10 +47,10 @@ const CardItem = React.memo(function CardItem({ params }) {
       key: params.key,
       dough: dough,
       size: size,
-      price: params.pizzaParams.price
+      price: params.pizzaParams.price,
+      img: params.img
     };
     dispatch(deleteFromCart(pizzaParams));
-    setQuantity(quantity - 1);
   };
 
   const renderAddButton = () => {
@@ -87,7 +82,7 @@ const CardItem = React.memo(function CardItem({ params }) {
               defaultChecked
               onChange={() => setDoug("slim")}
             />
-            <Label for={`slim-dough-${params.key}`}>тонке</Label>
+            <Label htmlFor={`slim-dough-${params.key}`}>тонке</Label>
           </List>
           <List>
             <InputButton
@@ -96,7 +91,7 @@ const CardItem = React.memo(function CardItem({ params }) {
               name={`dough-${params.key}`}
               onChange={() => setDoug("fat")}
             />
-            <Label for={`fat-dough-${params.key}`}>традиційне</Label>
+            <Label htmlFor={`fat-dough-${params.key}`}>традиційне</Label>
           </List>
         </SelectorList>
         <SelectorList>
@@ -108,7 +103,7 @@ const CardItem = React.memo(function CardItem({ params }) {
               onChange={() => setSize("small")}
               defaultChecked
             />
-            <Label for={`25sm-size-${params.key}`}>25 см</Label>
+            <Label htmlFor={`25sm-size-${params.key}`}>25 см</Label>
           </List>
           <List>
             <InputButton
@@ -117,7 +112,7 @@ const CardItem = React.memo(function CardItem({ params }) {
               name={`size-${params.key}`}
               onChange={() => setSize("middle")}
             />
-            <Label for={`30sm-size-${params.key}`}>30 см</Label>
+            <Label htmlFor={`30sm-size-${params.key}`}>30 см</Label>
           </List>
           <List>
             <InputButton
@@ -126,7 +121,7 @@ const CardItem = React.memo(function CardItem({ params }) {
               name={`size-${params.key}`}
               onChange={() => setSize("large")}
             />
-            <Label for={`35sm-size-${params.key}`}>35 см</Label>
+            <Label htmlFor={`35sm-size-${params.key}`}>35 см</Label>
           </List>
         </SelectorList>
       </SelectorWrapper>

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import {
   Button,
-  ButtonContainer,
+  FilterContainer,
   DropdownActiveItem,
   DropdownContainer,
   DropdownItem,
@@ -47,7 +47,7 @@ const CardFilter = React.memo(function CardFilter() {
     setDropdown(!dropdownOpened);
   };
 
-  const renderDropDownItems = () => {
+  const renderSorterDropDown = () => {
     return (
       <DropdownContainer
         ref={sortRef}
@@ -55,21 +55,22 @@ const CardFilter = React.memo(function CardFilter() {
         active={dropdownOpened}
       >
         Cортувати по:
-        <DropdownActiveItem>{currentSorter}</DropdownActiveItem>
+        <DropdownActiveItem>{Object.values(currentSorter)[0]}</DropdownActiveItem>
         <DropdownMenu active={dropdownOpened}>
-          {sorters.map((item) => {
+          {
+            sorters.map((item) => {
             const objKey = Object.keys(item)[0];
             const objValue = Object.values(item)[0];
 
-            if (objKey === currentSorter)
+            if (objKey === Object.values(currentSorter)[0])
               return (
-                <DropdownItem active onClick={(e) => setActiveSorter(objKey)}>
+                <DropdownItem key={objValue} active onClick={(e) => setActiveSorter(item)}>
                   {objValue}
                 </DropdownItem>
               );
             else
               return (
-                <DropdownItem onClick={(e) => setActiveSorter(objKey)}>
+                <DropdownItem key={objValue} onClick={(e) => setActiveSorter(item)}>
                   {objValue}
                 </DropdownItem>
               );
@@ -79,7 +80,7 @@ const CardFilter = React.memo(function CardFilter() {
     );
   };
 
-  const renderMenuButtons = () => {
+  const renderFilterButtons = () => {
     return (
       <>
         {filters.map((item) => {
@@ -108,10 +109,10 @@ const CardFilter = React.memo(function CardFilter() {
 
   return (
     <div>
-      <ButtonContainer>
-        {renderMenuButtons()}
-        {renderDropDownItems()}
-      </ButtonContainer>
+      <FilterContainer>
+        {renderFilterButtons()}
+        {renderSorterDropDown()}
+      </FilterContainer>
     </div>
   );
 });

@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+// EMPTY CART
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
   padding: 50px 0;
 `;
 const Title = styled.h1`
@@ -44,4 +44,59 @@ const BackToMenuButton = styled(Link)`
   }
 `;
 
+// CART
+
+const ContentContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  min-width: 320px;
+`;
+const CartTitle = styled.h2`
+  font-size: 32px;
+`;
+const ClearCartButton = styled.button`
+  color: #B6B6B6;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+`;
+const Content = styled.div``;
+const PizzaImgContainer = styled.div``;
+const PizzaImg = styled.img``;
+const DescriptionContainer = styled.div``;
+const PizzaName = styled.div``;
+const PizzaParams = styled.div``;
+const PizzaCount = styled.div``;
+const PizzaPrice = styled.div``;
+const RemovePizzaButton = styled.button``;
+const SumOfPizzas = styled.div``;
+const SumPrice = styled.div``;
+const BackToMenuButtonWhite = styled.a``;
+const PayButton = styled.a``;
+const QuantityOfPizza = styled.div``;
+const MinusButton = styled.a``;
+const PlusButton = styled.a``;
+
 export { Container, Title, Description, CartImg, BackToMenuButton };
+export {
+  CartTitle,
+  ClearCartButton,
+  Content,
+  ContentContainer,
+  PizzaImgContainer,
+  PizzaImg,
+  DescriptionContainer,
+  PizzaName,
+  PizzaParams,
+  PizzaCount,
+  PizzaPrice,
+  RemovePizzaButton,
+  SumOfPizzas,
+  SumPrice,
+  BackToMenuButtonWhite,
+  PayButton,
+  QuantityOfPizza,
+  MinusButton,
+  PlusButton
+};

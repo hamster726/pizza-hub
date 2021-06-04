@@ -1,7 +1,7 @@
-import styled, {css, keyframes} from "styled-components";
+import styled, {css} from "styled-components";
 import ArrowIco from "../../img/icons/dropdown-arrow.svg"
 
-const ButtonContainer = styled.div`
+const FilterContainer = styled.div`
   display: flex;
   justify-content: left;
   align-items: center;
@@ -29,7 +29,7 @@ const Button = styled.button`
   
   
   ${props => props.active && css`
-    background: #282828;;
+    background: #282828;
     color: #FFFFFF;
   `}
 `
@@ -128,7 +128,7 @@ const DropdownActiveItem = styled.div`
 `
 
 export {
-  ButtonContainer,
+  FilterContainer,
   Button,
   DropdownContainer,
   DropdownMenu,

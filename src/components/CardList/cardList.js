@@ -34,7 +34,7 @@ const CardList = () => {
   };
 
   const sortPizza = () => {
-    switch (sortBy) {
+    switch (Object.keys(sortBy)[0]) {
       case "popularity":
         catalogCopy.sort((a, b) => {
           return a.pizzaParams.popularity > b.pizzaParams.popularity ? +1 : -1;
@@ -53,11 +53,10 @@ const CardList = () => {
     }
   };
   const filterPizza = () => {
-    if (filterBy !== "all") {
-      catalogCopy = catalogCopy.filter((item) => {
-        if (item.pizzaParams[filterBy]) return true;
-      });
-    }
+    if (filterBy === "all") return;
+    catalogCopy = catalogCopy.filter((item) => {
+      if (item.pizzaParams[filterBy]) return true;
+    });
   };
 
   return (
