@@ -17,7 +17,7 @@ import {
   PlusButton,
 } from "./cardStyle";
 import {useDispatch, useSelector} from "react-redux";
-import {addToCart, deleteFromCart} from "../../redux/actions/actions";
+import {addToCart, removeFromCart} from "../../redux/actions/actions";
 
 const CardItem = React.memo(function CardItem({ params }) {
 
@@ -37,7 +37,8 @@ const CardItem = React.memo(function CardItem({ params }) {
       dough: dough,
       size: size,
       price: params.pizzaParams.price,
-      img: params.img
+      img: params.img,
+      name: params.name
     };
     dispatch(addToCart(pizzaParams));
   };
@@ -48,9 +49,10 @@ const CardItem = React.memo(function CardItem({ params }) {
       dough: dough,
       size: size,
       price: params.pizzaParams.price,
-      img: params.img
+      img: params.img,
+      name: params.name
     };
-    dispatch(deleteFromCart(pizzaParams));
+    dispatch(removeFromCart(pizzaParams));
   };
 
   const renderAddButton = () => {

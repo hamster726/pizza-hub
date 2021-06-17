@@ -3,6 +3,7 @@ import {
   GET_CATALOG,
   ADD_TO_CART,
   DELETE_FROM_CART,
+  REMOVE_FROM_CART,
   CLEAR_CART,
   SORT_BY,
   FILTER_BY,
@@ -70,7 +71,7 @@ const reducer = (state = initialState, action) => {
         cart: cartCopy,
       };
     }
-    case DELETE_FROM_CART: {
+    case REMOVE_FROM_CART: {
       const cartCopy = Object.assign({}, state.cart);
       const pizzaCopy = Object.assign({}, action.payload);
       const pizzaKey = `${pizzaCopy.key}-${pizzaCopy.dough}-${pizzaCopy.size}`;
@@ -86,6 +87,25 @@ const reducer = (state = initialState, action) => {
         ...state,
         cart: cartCopy,
       };
+    }
+
+    case DELETE_FROM_CART: {
+      const cartCopy = Object.assign({}, state.cart);
+      const pizzaCopy = Object.assign({}, action.payload);
+      const pizzaKey = `${pizzaCopy.key}-${pizzaCopy.dough}-${pizzaCopy.size}`;
+      delete cartCopy[pizzaKey];
+
+      return {
+        ...state,
+        cart: cartCopy,
+      };
+    }
+
+    case CLEAR_CART: {
+      return {
+        ...state,
+        cart: {}
+      }
     }
 
     case IS_LOADING: {

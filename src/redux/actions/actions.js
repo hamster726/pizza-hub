@@ -2,6 +2,7 @@ import {
   GET_CATALOG,
   ADD_TO_CART,
   DELETE_FROM_CART,
+  REMOVE_FROM_CART,
   CLEAR_CART,
   SORT_BY,
   FILTER_BY,
@@ -27,6 +28,13 @@ const addToCart = (pizza) => {
 const deleteFromCart = (pizza) => {
   return {
     type: DELETE_FROM_CART,
+    payload: pizza
+  }
+}
+
+const removeFromCart = (pizza) => {
+  return {
+    type: REMOVE_FROM_CART,
     payload: pizza
   }
 }
@@ -74,6 +82,7 @@ export {
   getCatalog,
   addToCart,
   deleteFromCart,
+  removeFromCart,
   clearCart,
   sortBy,
   filterBy,
