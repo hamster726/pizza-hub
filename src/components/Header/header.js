@@ -12,7 +12,7 @@ import {
 } from "./style";
 import {useSelector} from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faPlus, faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
+import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 
 
 const Header = () => {
