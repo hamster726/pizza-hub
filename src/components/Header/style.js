@@ -95,7 +95,9 @@ const Price = styled.div`
 `
 
 const CartCounter = styled.div`
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   min-width: 50px;
   font-style: normal;
   font-weight: bold;
@@ -105,15 +107,6 @@ const CartCounter = styled.div`
   max-width: 35%;
 
   color: #FFFFFF;
-
-  &:before {
-    content: "";
-    position: absolute;
-    left: 5px;
-    background-image: url(${CartIco});
-    width: 16px;
-    height: 16px;
-  }
 `
 
 export {

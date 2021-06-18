@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import {
   AddToCartButton,
   CardContainer,
@@ -16,17 +16,18 @@ import {
   MinusButton,
   PlusButton,
 } from "./cardStyle";
-import {useDispatch, useSelector} from "react-redux";
-import {addToCart, removeFromCart} from "../../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../../redux/actions/actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const CardItem = React.memo(function CardItem({ params }) {
-
   const [dough, setDoug] = useState("slim");
   const [size, setSize] = useState("small");
 
   const pizzaKey = `${params.key}-${dough}-${size}`;
 
-  const {cart} = useSelector(state => state);
+  const { cart } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const quantity = cart[pizzaKey] ? cart[pizzaKey].quantity : 0;
@@ -38,7 +39,7 @@ const CardItem = React.memo(function CardItem({ params }) {
       size: size,
       price: params.pizzaParams.price,
       img: params.img,
-      name: params.name
+      name: params.name,
     };
     dispatch(addToCart(pizzaParams));
   };
@@ -50,20 +51,27 @@ const CardItem = React.memo(function CardItem({ params }) {
       size: size,
       price: params.pizzaParams.price,
       img: params.img,
-      name: params.name
+      name: params.name,
     };
     dispatch(removeFromCart(pizzaParams));
   };
 
   const renderAddButton = () => {
+    const plusIcon = <FontAwesomeIcon icon={faPlus} />;
+    const minusIcon = <FontAwesomeIcon icon={faMinus} />;
+
     if (quantity === 0)
-      return <AddToCartButton onClick={addPizzaToCart}>Додати</AddToCartButton>;
+      return (
+        <AddToCartButton onClick={addPizzaToCart}>
+          <span>{plusIcon}</span>Додати
+        </AddToCartButton>
+      );
 
     return (
       <QuantityOfPizza>
-        <MinusButton onClick={removePizzaFromCart} />
+        <MinusButton onClick={removePizzaFromCart} >{minusIcon}</MinusButton>
         {quantity}
-        <PlusButton onClick={addPizzaToCart} />
+        <PlusButton onClick={addPizzaToCart} >{plusIcon}</PlusButton>
       </QuantityOfPizza>
     );
   };

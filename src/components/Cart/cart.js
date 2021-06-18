@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import EmptyCartLayout from "./emptyCartLayout";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -28,8 +28,20 @@ import {
   QuantityOfPizza,
   MinusButton,
   PlusButton,
-  ContentHeaderContainer, PizzaCard, SummaryContainer, ButtonsContainer,
+  ContentHeaderContainer,
+  PizzaCard,
+  SummaryContainer,
+  ButtonsContainer,
 } from "./style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMinus,
+  faPlus,
+  faShoppingBasket,
+  faTrashAlt,
+  faChevronLeft,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Cart = () => {
   const { cart } = useSelector((state) => state);
@@ -39,7 +51,7 @@ const Cart = () => {
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
-    console.log('effect');
+    console.log("effect");
     const cartValues = Object.values(cart);
     if (cartValues.length === 0) {
       setPrice(0);
@@ -48,22 +60,28 @@ const Cart = () => {
 
     let countCart = 0;
     let countPrice = 0;
-    for (let i = 0; i < cartValues.length; i ++) {
+    for (let i = 0; i < cartValues.length; i++) {
       countCart += cartValues[i].quantity;
       countPrice += cartValues[i].price * cartValues[i].quantity;
     }
 
     setPrice(countPrice);
     setCartCount(countCart);
-  })
-
+  });
 
   const renderAddButton = (pizza) => {
+    const plusIcon = <FontAwesomeIcon icon={faPlus} />;
+    const minusIcon = <FontAwesomeIcon icon={faMinus} />;
+
     return (
       <QuantityOfPizza>
-        <MinusButton onClick={() => dispatch(removeFromCart(pizza))} />
+        <MinusButton onClick={() => dispatch(removeFromCart(pizza))}>
+          {minusIcon}
+        </MinusButton>
         {pizza.quantity}
-        <PlusButton onClick={() => dispatch(addToCart(pizza))} />
+        <PlusButton onClick={() => dispatch(addToCart(pizza))}>
+          {plusIcon}
+        </PlusButton>
       </QuantityOfPizza>
     );
   };
@@ -73,11 +91,16 @@ const Cart = () => {
   };
 
   const deletePizzaFromCart = (pizza) => {
-    dispatch(deleteFromCart(pizza))
-  }
+    dispatch(deleteFromCart(pizza));
+  };
 
   const renderCartContent = () => {
     if (Object.keys(cart).length === 0) return <EmptyCartLayout />;
+
+    const basketIcon = <FontAwesomeIcon icon={faShoppingBasket} />;
+    const trashIcon = <FontAwesomeIcon icon={faTrashAlt} />;
+    const chevronIcon = <FontAwesomeIcon icon={faChevronLeft} />;
+    const timesIcon = <FontAwesomeIcon icon={faTimes} />;
 
     const cartArray = [];
 
@@ -87,12 +110,22 @@ const Cart = () => {
       }
     }
 
+    const nameLib = {
+      slim: "тонке",
+      fat: "традиційне",
+      small: "25",
+      middle: "30",
+      large: "35",
+    }
+
     return (
       <>
         <ContentHeaderContainer>
-          <CartTitle>🛒 Кошик</CartTitle>
+          <CartTitle>
+            <span>{basketIcon}</span> Кошик
+          </CartTitle>
           <ClearCartButton onClick={clearCartPls}>
-            ♻ Очистити кошик
+            {trashIcon} Очистити кошик
           </ClearCartButton>
         </ContentHeaderContainer>
         <Content>
@@ -105,11 +138,13 @@ const Cart = () => {
                   </PizzaImgContainer>
                   <DescriptionContainer>
                     <PizzaName>{pizza.name}</PizzaName>
-                    <PizzaParams>{`${pizza.dough}, ${pizza.size}`}</PizzaParams>
+                    <PizzaParams>{`${nameLib[pizza.dough]} тісто, ${nameLib[pizza.size]} см.`}</PizzaParams>
                   </DescriptionContainer>
                   <PizzaCount>{renderAddButton(pizza)}</PizzaCount>
                   <PizzaPrice>{pizza.price} грн</PizzaPrice>
-                  <DeletePizzaButton onClick={() => deletePizzaFromCart(pizza)}>×</DeletePizzaButton>
+                  <DeletePizzaButton onClick={() => deletePizzaFromCart(pizza)}>
+                    {timesIcon}
+                  </DeletePizzaButton>
                 </ContentContainer>
               </PizzaCard>
             );
@@ -121,13 +156,15 @@ const Cart = () => {
               Кількість піцци: <span>{cartCount} шт</span>
             </SumOfPizzas>
             <SumPrice>
-              Сума замовлення: <span>{price} грн</span>
+              Сума замовлення: <span>{price.toLocaleString()} грн</span>
             </SumPrice>
           </ContentContainer>
         </SummaryContainer>
         <ButtonsContainer>
           <ContentContainer>
-            <BackToMenuButtonWhite>Повернутися назад</BackToMenuButtonWhite>
+            <BackToMenuButtonWhite to={"/"}>
+              <span>{chevronIcon}</span>Повернутися назад
+            </BackToMenuButtonWhite>
             <PayButton>Оплатити</PayButton>
           </ContentContainer>
         </ButtonsContainer>

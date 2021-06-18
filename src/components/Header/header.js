@@ -11,6 +11,8 @@ import {
   LogoWrapper, Price
 } from "./style";
 import {useSelector} from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faPlus, faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 
 
 const Header = () => {
@@ -42,6 +44,8 @@ const Header = () => {
     setCartCount(countCart);
   })
 
+  const basketIcon = <FontAwesomeIcon icon={faShoppingBasket} />;
+
   return (
     <HeaderContainer>
       <LogoWrapper to="/">
@@ -55,7 +59,7 @@ const Header = () => {
       </LogoWrapper>
         <CartButton to="/cart">
           <Price>{price.toLocaleString()} грн</Price>
-          <CartCounter>{cartCount}</CartCounter>
+          <CartCounter><span>{basketIcon}</span> {cartCount}</CartCounter>
         </CartButton>
     </HeaderContainer>
   );

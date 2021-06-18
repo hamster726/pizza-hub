@@ -105,36 +105,23 @@ const Price = styled.div`
 `;
 
 const AddToCartButton = styled.button`
-  display: block;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 132px;
   height: 40px;
-
   background: #fe5f1e;
   border: 1px solid #fe5f1e;
-  box-sizing: border-box;
   border-radius: 30px;
   padding: 0 20px;
-  font-style: normal;
   font-weight: bold;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 22px;
   text-align: right;
-  
   color: #ffffff;
   
-  &:before {
-    content: "+";
-    position: absolute;
-
-    font-style: normal;
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 19px;
-    top: 50%;
-    left: 20px;
-    
-    transform: translate(-50%,-50%);
+  & > span {
+    font-size: 14px;
   }
 `;
 
@@ -154,33 +141,19 @@ const QuantityOfPizza = styled.div`
 `;
 
 const MinusButton = styled.button`
-  display: block;
-  position: relative;
-  padding: 0;
-  
-  border: none;
-  background-color: #fe5f1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 2px solid #fe5f1e;
   border-radius: 100%;
-  color: white;
+  padding: 0;
+  color: #fe5f1e;
   height: 40px;
   width: 40px;
-  
-  
-  
-  &:before {
-    position: absolute;
-    content: url(${MinusIco});
-    top:50%;
-    left:50%;
-    width: 80%;
-    transform: translate(-50%, -47%) scale(0.5);
-  }
-
+  font-size: 14px;
 `;
-const PlusButton = styled(MinusButton)`
-  &:before {
-    content: url(${PlusIco});
-`;
+const PlusButton = styled(MinusButton)``;
 
 export {
   CardContainer,

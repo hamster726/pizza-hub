@@ -60,7 +60,7 @@ const ContentContainer = styled.div`
 `;
 
 const PizzaCard = styled.div`
-  border-top: 1px solid #F4F4F4;
+  border-top: 1px solid #f4f4f4;
   padding: 30px 0;
 `;
 
@@ -85,9 +85,13 @@ const ButtonsContainer = styled.div`
   width: 70%;
 `;
 
-
 const CartTitle = styled.h2`
   font-size: 32px;
+
+  & > span {
+    font-size: 26px;
+    opacity: 0.75;
+  }
 `;
 const ClearCartButton = styled.button`
   color: #b6b6b6;
@@ -119,6 +123,7 @@ const PizzaParams = styled.div`
 const PizzaCount = styled.div`
   font-size: 22px;
   font-weight: bold;
+  user-select: none;
 `;
 const PizzaPrice = styled.div`
   font-weight: bold;
@@ -127,42 +132,50 @@ const PizzaPrice = styled.div`
 const DeletePizzaButton = styled.button`
   width: 32px;
   height: 32px;
-  background: #FFFFFF;
-  border: 2px solid #D7D7D7;
+  background: #ffffff;
+  border: 2px solid #d7d7d7;
   border-radius: 100%;
-  color: #D7D7D7;
-  font-size: 18px;
+  color: #d7d7d7;
+  font-size: 12px;
 `;
 const SumOfPizzas = styled.div`
   font-size: 22px;
+
   & > span {
     font-weight: bold;
   }
 `;
 const SumPrice = styled.div`
   font-size: 22px;
+
   & > span {
     font-weight: bold;
-    color: #FE5F1E;
+    color: #fe5f1e;
   }
 `;
-const BackToMenuButtonWhite = styled.a`
+const BackToMenuButtonWhite = styled(Link)`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 24px;
   align-items: center;
   width: 211px;
   height: 55px;
-  background: #FFFFFF;
-  border: 1px solid #D3D3D3;
+  background: #ffffff;
+  border: 1px solid #d3d3d3;
   border-radius: 30px;
-  color: #CACACA!important;
+  color: #cacaca !important;
   cursor: pointer;
+
+  & > span {
+    font-size: 13px;
+  }
 `;
 const PayButton = styled(BackToMenuButtonWhite)`
+  justify-content: center;
   font-weight: bold;
-  border: 1px solid #FE5F1E;
-  background-color: #FE5F1E;
-  color: white!important;
+  border: 1px solid #fe5f1e;
+  background-color: #fe5f1e;
+  color: white !important;
 `;
 const QuantityOfPizza = styled.div`
   display: flex;
@@ -172,14 +185,18 @@ const QuantityOfPizza = styled.div`
 `;
 const MinusButton = styled.a`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
   width: 32px;
   height: 32px;
-  background: #FFFFFF;
-  border: 2px solid #FE5F1E;
+  background: #ffffff;
+  border: 2px solid #fe5f1e;
+  color: #fe5f1e !important;
   border-radius: 100%;
+  cursor: pointer;
 `;
-const PlusButton = styled(MinusButton)`
-`;
+const PlusButton = styled(MinusButton)``;
 
 export { Container, Title, Description, CartImg, BackToMenuButton };
 export {
