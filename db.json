@@ -2,7 +2,7 @@
   "catalog": [
     {
       "id": 1,
-      "key": "cheeseburger-pizza",
+      "key": "cheeseburger-pizza`",
       "img": "https://dodopizza-a.akamaihd.net/static/Img/Products/8a813e3b734e457c848a60fc70a100d5_366x366.jpeg",
       "name": "Чізбургер піца",
       "pizzaKit": {
