@@ -1,33 +1,44 @@
 import styled, {css} from "styled-components";
 import ArrowIco from "../../img/icons/dropdown-arrow.svg"
+import {device} from "../../styles/device"
 
 const FilterContainer = styled.div`
   display: flex;
   justify-content: left;
   align-items: center;
-  padding-top: 40px;
+  margin-top: 40px;
+  
+
+  @media ${device.tablet} {
+    overflow: scroll;
+  }
+
+`
+
+const SorterContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 `
 
 const Button = styled.button`
-  
-  
-  
+
+
+
   height: 46px;
   border-radius: 30px;
 
   padding: 0 30px;
   margin: 5px 5px;
-  
+
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
   line-height: 19px;
   text-align: center;
-  
   border: none;
- 
-  
-  
+
+
   ${props => props.active && css`
     background: #282828;
     color: #FFFFFF;
@@ -35,12 +46,11 @@ const Button = styled.button`
 `
 
 const DropdownContainer = styled.div`
-  margin-left: auto;
   position: relative;
   display: flex;
   justify-content: left;
   align-items: center;
-  
+
   min-width: 190px;
 
   font-style: normal;
@@ -51,7 +61,7 @@ const DropdownContainer = styled.div`
 
 
   color: #2C2C2C;
-  
+
   &:before {
     content: "";
     position: absolute;
@@ -60,14 +70,19 @@ const DropdownContainer = styled.div`
 
     width: 10px;
     height: 5.62px;
-    
+
     transform: translateY(-50%) rotate(180deg);
     background-image: url(${ArrowIco});
     transition: 0.1s all ease;
 
     ${props => props.active && css`
       transform: translateY(-50%) rotate(0);
-  `}
+    `}
+  }
+
+  @media ${device.laptop} {
+    margin-top: 20px;
+    padding: 10px 0;
   }
 `
 
@@ -87,7 +102,7 @@ const DropdownMenu = styled.div`
   border-bottom-right-radius: 10px;
   padding: 13px 0;
   min-width: 132px;
-  
+
   transition: .1s all ease;
 
   ${props => props.active && css`
@@ -98,22 +113,22 @@ const DropdownMenu = styled.div`
 
 `
 const DropdownItem = styled.div`
-  
+
   display: flex;
   align-items: center;
   cursor: pointer;
 
   font-weight: normal;
-  
+
   height: 38px;
   padding-left: 14px;
-  
+
   &:hover {
     background: rgba(254, 95, 30, 0.05);
     color: #FE5F1E;
     font-weight: bold;
   }
-  
+
 `
 
 const DropdownActiveItem = styled.div`
@@ -133,5 +148,6 @@ export {
   DropdownContainer,
   DropdownMenu,
   DropdownItem,
-  DropdownActiveItem
+  DropdownActiveItem,
+  SorterContainer
 }

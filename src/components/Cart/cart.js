@@ -32,6 +32,7 @@ import {
   PizzaCard,
   SummaryContainer,
   ButtonsContainer,
+  PriceCountContainer
 } from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -140,8 +141,10 @@ const Cart = () => {
                     <PizzaName>{pizza.name}</PizzaName>
                     <PizzaParams>{`${nameLib[pizza.dough]} тісто, ${nameLib[pizza.size]} см.`}</PizzaParams>
                   </DescriptionContainer>
-                  <PizzaCount>{renderAddButton(pizza)}</PizzaCount>
-                  <PizzaPrice>{pizza.price} грн</PizzaPrice>
+                  <PriceCountContainer>
+                    <PizzaCount>{renderAddButton(pizza)}</PizzaCount>
+                    <PizzaPrice>{pizza.price} грн</PizzaPrice>
+                  </PriceCountContainer>
                   <DeletePizzaButton onClick={() => deletePizzaFromCart(pizza)}>
                     {timesIcon}
                   </DeletePizzaButton>
@@ -163,7 +166,7 @@ const Cart = () => {
         <ButtonsContainer>
           <ContentContainer>
             <BackToMenuButtonWhite to={"/"}>
-              <span>{chevronIcon}</span>Повернутися назад
+              <span>{chevronIcon}</span> Назад
             </BackToMenuButtonWhite>
             <PayButton>Оплатити</PayButton>
           </ContentContainer>

@@ -6,6 +6,7 @@ import {
   DropdownContainer,
   DropdownItem,
   DropdownMenu,
+  SorterContainer
 } from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { filterBy, sortBy } from "../../redux/actions/actions";
@@ -111,8 +112,10 @@ const CardFilter = React.memo(function CardFilter() {
     <div>
       <FilterContainer>
         {renderFilterButtons()}
-        {renderSorterDropDown()}
       </FilterContainer>
+      <SorterContainer>
+        {renderSorterDropDown()}
+      </SorterContainer>
     </div>
   );
 });

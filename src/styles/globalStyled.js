@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {device} from "./device";
 
 const MainContainer = styled.div`
   display: flex;
@@ -8,8 +9,11 @@ const MainContainer = styled.div`
 
   max-width: 1340px;
 
-  padding: 0 48px 0 67px;
   margin: 0 auto;
+
+  @media ${device.tablet} {
+    padding: 0 24px 0 32px;
+  }
 `;
 
 const Title = styled.h2`
@@ -20,4 +24,4 @@ const Title = styled.h2`
   line-height: 39px;
 `;
 
-export { MainContainer, Title };
+export {MainContainer, Title};

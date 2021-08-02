@@ -38,6 +38,7 @@ body::-webkit-scrollbar-thumb {
   background-color: white;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
   border-radius: 10px;;
+
 }
 
 
@@ -48,4 +49,10 @@ a:hover {
 
 button:focus {
   outline: none!important;
+}
+
+@media screen and (max-width: 768px) {
+  #root {
+    padding: 0 10px 0 10px;
+  }
 }
