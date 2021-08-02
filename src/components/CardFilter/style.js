@@ -43,6 +43,11 @@ const Button = styled.button`
     background: #282828;
     color: #FFFFFF;
   `}
+  
+  &:hover {
+    background: #484848;
+    color: #FFFFFF;
+  }
 `
 
 const DropdownContainer = styled.div`

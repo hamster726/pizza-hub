@@ -123,6 +123,11 @@ const AddToCartButton = styled.button`
   & > span {
     font-size: 14px;
   }
+  &:hover {
+    & > span {
+      transform: rotate(360deg);
+    }
+  }
 `;
 
 const QuantityOfPizza = styled.div`
@@ -152,6 +157,11 @@ const MinusButton = styled.button`
   height: 40px;
   width: 40px;
   font-size: 14px;
+  
+  &:hover {
+    color: white;
+    background-color: #fe5f1e;
+  }
 `;
 const PlusButton = styled(MinusButton)``;
 

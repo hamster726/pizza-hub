@@ -114,12 +114,18 @@ const CartTitle = styled.h2`
       font-size: calc(16px + 1.5vw);
     }
   }
+  
+
 `;
 const ClearCartButton = styled.button`
   color: #b6b6b6;
   background-color: transparent;
   border: none;
   font-size: 16px;
+  
+  &:hover {
+    color: #212121;
+  }
   
   @media ${device.mobileL} {
     font-size: calc(10px + 1.5vw);
@@ -220,6 +226,11 @@ const DeletePizzaButton = styled.button`
   color: #d7d7d7;
   font-size: 12px;
   
+  &:hover {
+    background: #d7d7d7;
+    color: #ffffff;
+  }
+  
   @media ${device.laptop} {
     display: none;
   }
@@ -270,11 +281,17 @@ const BackToMenuButtonWhite = styled(Link)`
     font-size: 13px;
     margin-right: 20px;
   }
-  
+
   @media ${device.mobileXL} {
     height: 45px;
   }
-  
+
+  &:hover {
+    border: 1px solid #868686;
+    color: #868686 !important;
+
+  }
+
 `;
 const PayButton = styled(BackToMenuButtonWhite)`
   justify-content: center;
@@ -287,6 +304,15 @@ const PayButton = styled(BackToMenuButtonWhite)`
 
   @media ${device.mobileXL} {
     width: 151px;
+  }
+
+  &:hover {
+    transition: 0.3s ease all;
+    box-shadow: 0px 10px 22px 7px rgba(34, 60, 80, 0.2);
+    border: 1px solid #fe5f1e;
+    background-color: #fe5f1e;
+    color: white !important;
+
   }
 `;
 const QuantityOfPizza = styled.div`
@@ -311,6 +337,11 @@ const MinusButton = styled.a`
   color: #fe5f1e !important;
   border-radius: 100%;
   cursor: pointer;
+  
+  &:hover {
+    background: #fe5f1e;
+    color: #ffffff!important;
+  }
 `;
 const PlusButton = styled(MinusButton)``;
 

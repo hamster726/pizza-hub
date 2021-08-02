@@ -3,6 +3,8 @@ import CartIco from "../../img/icons/cart-icon.svg"
 import {Link} from "react-router-dom";
 import {device} from "../../styles/device";
 
+
+
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
@@ -24,12 +26,7 @@ const HeaderContainer = styled.header`
   @media ${device.mobileXL} {
     justify-content: center;
   }
-`
-
-const LogoWrapper = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
 `
 const LogoContainer = styled.div`
   display: flex;
@@ -37,6 +34,19 @@ const LogoContainer = styled.div`
   width: 38px;
   height: 38px;
 
+`
+
+const LogoWrapper = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    ${LogoContainer} {
+      transition: 0.5s ease all;
+      transform: rotate(360deg);
+    }
+  }
 `
 
 const LogoImg = styled.img`
@@ -96,6 +106,10 @@ const CartButton = styled(Link)`
     background: rgba(255, 255, 255, 0.25);
   }
   
+  &:hover {
+    box-shadow: 0px 10px 22px 7px rgba(34, 60, 80, 0.2);
+  }
+  
   @media ${device.mobileXL} {
     width: 50px;
     min-width: auto;
@@ -105,6 +119,10 @@ const CartButton = styled(Link)`
     &:before {
       width: 0;
       height: 0;
+    }
+
+    &:hover {
+      box-shadow: none;
     }
   }
 `
