@@ -1,3 +1,3 @@
 # 🍕 Pizza Hub
 
-[Create React App](https://github.com/facebook/create-react-app).
+[Layout on figma](https://www.figma.com/file/wWUnQwvRDWBfPx1v1pCAfO/React-Pizza)
