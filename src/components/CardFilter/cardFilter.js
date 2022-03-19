@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, {useRef, useState} from "react";
 import {
   Button,
   FilterContainer,
@@ -8,14 +8,14 @@ import {
   DropdownMenu,
   SorterContainer
 } from "./style";
-import { useDispatch, useSelector } from "react-redux";
-import { filterBy, sortBy } from "../../redux/actions/actions";
+import {useDispatch, useSelector} from "react-redux";
+import {filterBy, sortBy} from "../../redux/actions/actions";
 
-const CardFilter = React.memo(function CardFilter() {
+const  CardFilter = () => {
   const [dropdownOpened, setDropdown] = useState(false);
 
-  const { sorters, filters } = useSelector((state) => state);
-  const { currentFilter, currentSorter } = useSelector((state) => {
+  const {sorters, filters} = useSelector((state) => state);
+  const {currentFilter, currentSorter} = useSelector((state) => {
     return {
       currentFilter: state.filterBy,
       currentSorter: state.sortBy,
@@ -60,22 +60,22 @@ const CardFilter = React.memo(function CardFilter() {
         <DropdownMenu active={dropdownOpened}>
           {
             sorters.map((item) => {
-            const objKey = Object.keys(item)[0];
-            const objValue = Object.values(item)[0];
+              const objKey = Object.keys(item)[0];
+              const objValue = Object.values(item)[0];
 
-            if (objKey === Object.values(currentSorter)[0])
-              return (
-                <DropdownItem key={objValue} active onClick={(e) => setActiveSorter(item)}>
-                  {objValue}
-                </DropdownItem>
-              );
-            else
-              return (
-                <DropdownItem key={objValue} onClick={(e) => setActiveSorter(item)}>
-                  {objValue}
-                </DropdownItem>
-              );
-          })}
+              if (objKey === Object.values(currentSorter)[0])
+                return (
+                  <DropdownItem key={objValue} active onClick={() => setActiveSorter(item)}>
+                    {objValue}
+                  </DropdownItem>
+                );
+              else
+                return (
+                  <DropdownItem key={objValue} onClick={() => setActiveSorter(item)}>
+                    {objValue}
+                  </DropdownItem>
+                );
+            })}
         </DropdownMenu>
       </DropdownContainer>
     );
@@ -87,22 +87,15 @@ const CardFilter = React.memo(function CardFilter() {
         {filters.map((item) => {
           const objKey = Object.keys(item)[0];
           const objValue = Object.values(item)[0];
-          if (objKey === currentFilter) {
-            return (
-              <Button
-                key={objKey}
-                active
-                onClick={(e) => setActiveFilter(objKey)}
-              >
-                {objValue}
-              </Button>
-            );
-          } else
-            return (
-              <Button key={objKey} onClick={(e) => setActiveFilter(objKey)}>
-                {objValue}
-              </Button>
-            );
+          return (
+            <Button
+              key={objKey}
+              active={objKey === currentFilter ? 'active' : null}
+              onClick={() => setActiveFilter(objKey)}
+            >
+              {objValue}
+            </Button>
+          );
         })}
       </>
     );
@@ -118,6 +111,6 @@ const CardFilter = React.memo(function CardFilter() {
       </SorterContainer>
     </div>
   );
-});
+}
 
 export default CardFilter;

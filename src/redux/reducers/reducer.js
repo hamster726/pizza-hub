@@ -7,35 +7,37 @@ import {
   CLEAR_CART,
   SORT_BY,
   FILTER_BY,
-  UPDATE_PRICE,
-  UPDATE_ORDER_SIZE,
+  // UPDATE_PRICE,
+  // UPDATE_ORDER_SIZE,
   IS_LOADING,
 } from "../types";
 import {
   getCatalog,
-  addToCart,
-  deleteFromCart,
-  clearCart,
-  sortBy,
-  filterBy,
-  updatePrice,
-  updateOrderSize,
+  // addToCart,
+  // deleteFromCart,
+  // clearCart,
+  // sortBy,
+  // filterBy,
+  // updatePrice,
+  // updateOrderSize,
   isLoading,
 } from "../actions/actions";
 
 const initialState = {
   catalog: [],
-  sortedCatalog: [],
+  // sortedCatalog: [],
   sortBy: {popularity: "популярності"},
   filterBy: "all",
-  sumPrice: 0,
+  // sumPrice: 0,
   cart: {},
   isLoading: true,
+  // Переместить в константы
   sorters: [
     { popularity: "популярності" },
     { price: "ціні" },
     { alphabet: "алфавіту" },
   ],
+  // Переместить в константы
   filters: [
     { all: "Всі" },
     { meat: "М'ясні" },
@@ -148,7 +150,7 @@ export const loadCatalog = () => async (dispatch) => {
     })
     .catch((e) => {
       console.error("Не удается получить данные", e);
-      setTimeout(() => loadCatalog()(dispatch), 2000);
+      setTimeout(() => loadCatalog()(dispatch), 2000); // Добавить до 5 попыток или кнопку "Попробовать снова"
     });
 };
 

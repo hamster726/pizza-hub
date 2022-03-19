@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { Title } from "../../styles/globalStyled";
+import React, {useEffect} from "react";
+import {Title} from "../../styles/globalStyled";
 
-import CardItem from "./cardItem";
-import { CardListContainer } from "./cardListStyle";
-import { loadCatalog } from "../../redux/reducers/reducer";
-import { useDispatch, useSelector } from "react-redux";
+import CardItem from "./CardItem/cardItem";
+import {CardListContainer} from "./style";
+import {loadCatalog} from "../../redux/reducers/reducer";
+import {useDispatch, useSelector} from "react-redux";
 import LoadingPizzaBlock from "../LoadingBlock/loadingPizzaBlock";
 
-const CardList = () => {
+const CardList = React.memo(function CardList()  {
   const dispatch = useDispatch();
-  const { catalog, isLoading, filterBy, sortBy } = useSelector(
+  const {catalog, isLoading, filterBy, sortBy} = useSelector(
     (state) => state
   );
   let catalogCopy = catalog.slice("");
@@ -22,14 +22,14 @@ const CardList = () => {
     if (isLoading) {
       return Array(12)
         .fill(0)
-        .map((_, index) => <LoadingPizzaBlock key={index} />);
+        .map((_, index) => <LoadingPizzaBlock key={index}/>);
     }
 
     filterPizza();
     sortPizza();
 
     return catalogCopy.map((pizza) => {
-      return <CardItem key={pizza.key} params={pizza} />;
+      return <CardItem key={pizza.key} params={pizza}/>;
     });
   };
 
@@ -54,9 +54,7 @@ const CardList = () => {
   };
   const filterPizza = () => {
     if (filterBy === "all") return;
-    catalogCopy = catalogCopy.filter((item) => {
-      if (item.pizzaParams[filterBy]) return true;
-    });
+    catalogCopy = catalogCopy.filter((item) => item.pizzaParams[filterBy]);
   };
 
   return (
@@ -65,6 +63,6 @@ const CardList = () => {
       <CardListContainer>{renderPizzaList()}</CardListContainer>
     </>
   );
-};
+});
 
 export default CardList;

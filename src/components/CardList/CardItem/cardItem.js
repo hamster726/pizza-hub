@@ -15,9 +15,9 @@ import {
   PriceContainer,
   MinusButton,
   PlusButton,
-} from "./cardStyle";
+} from "./style";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../../redux/actions/actions";
+import { addToCart, removeFromCart } from "../../../redux/actions/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -55,6 +55,7 @@ const CardItem = React.memo(function CardItem({ params }) {
     };
     dispatch(removeFromCart(pizzaParams));
   };
+
 
   const renderAddButton = () => {
     const plusIcon = <FontAwesomeIcon icon={faPlus} />;

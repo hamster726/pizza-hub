@@ -1,6 +1,4 @@
 import styled, {css} from "styled-components";
-import PlusIco from "../../img/icons/plus-solid.svg"
-import MinusIco from "../../img/icons/minus-solid.svg"
 
 const CardContainer = styled.div`
   display: flex;
@@ -58,7 +56,7 @@ const List = styled.li`
   align-items: center;
   margin: 0 5px;
   height: 40px;
-  box-shadow: 0px 2px 4px rgb(0 0 0 / 4%);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 4%);
 `;
 
 
@@ -165,6 +163,7 @@ const MinusButton = styled.button`
 `;
 const PlusButton = styled(MinusButton)``;
 
+
 export {
   CardContainer,
   ImageContainer,
@@ -180,5 +179,5 @@ export {
   QuantityOfPizza,
   PriceContainer,
   MinusButton,
-  PlusButton
+  PlusButton,
 };

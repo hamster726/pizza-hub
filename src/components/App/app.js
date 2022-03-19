@@ -10,7 +10,6 @@ import Cart from "../Cart/cart";
 const App = () => {
   return (
     <Provider store={store}>
-
       <Router>
         <Header />
         <Switch>
